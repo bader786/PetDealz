@@ -1,6 +1,7 @@
 services:
   - type: web
     name: pet-selling-backend
+    runtime: node  # ✅ Add this line
     rootDir: backend
     buildCommand: npm install
     startCommand: node server.js
