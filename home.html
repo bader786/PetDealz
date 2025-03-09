@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Selling - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .pet-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .pet-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .sell-btn {
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .sell-btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="home.html">Home</a>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search pets...">
+        </div>
+        <a href="login.html">Login</a>
+        <button class="sell-btn" onclick="window.location.href='sell.html'">Sell</button>
+    </div>
+
+    <div class="container" id="petList">
+        <!-- Pet listings will be inserted here dynamically -->
+    </div>
+
+    <script>
+        const pets = [
+            { name: "Golden Retriever", image: "https://via.placeholder.com/250", price: "$500" },
+            { name: "Persian Cat", image: "https://via.placeholder.com/250", price: "$300" },
+            { name: "Parrot", image: "https://via.placeholder.com/250", price: "$150" },
+        ];
+        
+        function loadPets() {
+            const petList = document.getElementById("petList");
+            petList.innerHTML = "";
+            pets.forEach(pet => {
+                const petCard = `<div class='pet-card'>
+                                    <img src='${pet.image}' alt='${pet.name}'>
+                                    <h3>${pet.name}</h3>
+                                    <p>${pet.price}</p>
+                                    <button class='sell-btn'>Buy Now</button>
+                                </div>`;
+                petList.innerHTML += petCard;
+            });
+        }
+        
+        loadPets();
+    </script>
+</body>
+</html>
